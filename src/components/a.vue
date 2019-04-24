@@ -3,6 +3,7 @@
         <div @click="getMsg()" class="getMsg">请求数据</div>
         <div @click="cancelMsg()" class="cancelMsg">取消请求</div>
         <div>{{$store.state.wxf.name}}</div>
+        <input type="text" placeholder="请输入，会被缓存">
     </div>
 </template>
 

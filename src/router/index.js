@@ -9,6 +9,9 @@ const routes = [
         path:'/home',
         component:Home,
         name:'home',
+        meta:{
+            keepAlive:true
+        }
     },
     {
         path:'/about',
@@ -19,6 +22,9 @@ const routes = [
                 alert('1');
             }
             next()
+        },
+        meta:{
+            keepAlive:false
         }
     }
 ];
