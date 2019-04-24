@@ -1,8 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
-import {TIME_OUT_MAX , _apiHost} from './config'
+import {TIME_OUT_MAX } from './config'
+import baseUrl from './../until/setBaseUrl'
 
-axios.defaults.baseURL = _apiHost;  //配置接口地址
+axios.defaults.baseURL = baseUrl;  //配置接口地址
 axios.defaults.timeout = TIME_OUT_MAX;  //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //配置请求头
 

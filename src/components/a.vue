@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div @click="getMsg()">请求数据</div>
-        <div @click="cancelMsg()">取消请求</div>
+        <div @click="getMsg()" class="getMsg">请求数据</div>
+        <div @click="cancelMsg()" class="cancelMsg">取消请求</div>
         <div>{{$store.state.wxf.name}}</div>
     </div>
 </template>
@@ -34,7 +34,7 @@
             getMsg(){
                 let CancelToken = this.$axios.CancelToken;
                 let self = this;
-                this.$axios.get('http://t.weather.sojson.com/api/weather/city/101030100',{
+                this.$axios.get('api/weather/city/101030100',{
                     cancelToken: new CancelToken(function executor(c) {
                         self.cancel = c;
                         window.console.log(c)
@@ -57,6 +57,18 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+    @color:red;
+    .public(@radus){
+        border:1px solid black;
+        border-radius: @radus;
+        width: 100px;
+    }
+    .getMsg{
+        color: @color;
+        .public(10px)
+    }
+    .cancelMsg{
+        .public(20px)
+    }
 </style>

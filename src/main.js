@@ -4,9 +4,12 @@ import router from './router'
 import axios from './axios/http'
 import store from './store'
 
+
+
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 
+window.console.log(process.env.VUE_APP_URL);
 
 new Vue({
   store,
