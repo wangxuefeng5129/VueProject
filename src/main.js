@@ -3,9 +3,8 @@ import App from './App.vue'
 import router from './router'
 import axios from './axios/http'
 import store from './store'
-
-
-
+import 'lib-flexible'
+import './assets/styles/reset.css'
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 

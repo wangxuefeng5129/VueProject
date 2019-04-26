@@ -2,35 +2,19 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
-import Home from './../components/a'
-import About from './../components/b'
+import Home from './../view/home'
 const routes = [
     {
-        path:'/home',
-        component:Home,
-        name:'home',
-        meta:{
-            keepAlive:true
-        }
-    },
-    {
-        path:'/about',
-        component:About,
-        name:'about',
-        beforeEnter:(to,from,next)=>{
-            if(to.name === 'about'){
-                alert('1');
-            }
-            next()
-        },
-        meta:{
-            keepAlive:false
-        }
+        path:'/',
+        component:Home
     }
 ];
 
 const router = new VueRouter({
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0}
+    }
 });
 
 //路由守卫设置
