@@ -1,14 +1,18 @@
 <template>
     <div>
-        312414124
+        <china></china>
+        <of-proportion></of-proportion>
     </div>
 </template>
 
 <script>
+    import china from '../common/china'
+    import OfProportion from './OfProportion'
     export default {
         name:'BaseCenter',
         components:{
-
+            china,
+            OfProportion
         },
         data(){
             return{}

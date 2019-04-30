@@ -7,12 +7,15 @@
             </div>
             <div>
                 <table  class="data">
+                    <thead>
                     <tr class="data_title">
                         <th>设备名称</th>
                         <th>在库（有效）设备数</th>
                         <th>当前失联设备数</th>
                         <th>当前失联设备占比</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr v-for="(item,index) in data_message" :key="index">
                         <td>{{item.equipmentName}}</td>
                         <td>{{item.equipmentUse}}</td>
@@ -22,6 +25,7 @@
                             <span style="float: right; line-height: 0.3rem">{{item.equipmentProportion}}%</span>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -43,8 +47,6 @@
                     {equipmentName:'路灯',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
                     {equipmentName:'广交箱',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
                     {equipmentName:'地埋柜',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-                    {equipmentName:'不知道',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-                    {equipmentName:'不知道',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45}
 
                 ]
             }
@@ -74,5 +76,19 @@
         .data_title{
             color: RGB(60,55,86);
         }
+    }
+    tbody{
+        height:1.8rem;
+        display: block;
+        overflow-y:scroll;
+        -webkit-overflow-scrolling: touch; // 为了滚动顺畅
+    }
+    table thead, tbody tr {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+    }
+    table tbody::-webkit-scrollbar {
+        display: none; // 隐藏滚动条
     }
 </style>

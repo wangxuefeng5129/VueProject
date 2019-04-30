@@ -43,11 +43,14 @@
 
 
 <style scoped lang="less">
+    .progress-outer{
+        position: relative;
+    }
     .progress{
         height: 0.1rem;
         width:70%;
-        margin-bottom: 0.1rem;
-        float: left;
+        position: absolute;
+        top: 0.1rem;
         overflow: hidden;
         background-color: #f5f5f5;
         border-radius: 0.4rem;

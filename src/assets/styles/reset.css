@@ -25,7 +25,10 @@ th, td /* table elements 表格元素 */ {
 /** 设置默认字体 **/
 body,
 button, input, select, textarea /* for ie */ {
-    font: 0.24rem tahoma, arial, \5b8b\4f53, sans-serif;
+    font: 0.12rem tahoma, arial, \5b8b\4f53, sans-serif;
+}
+body{
+    font-size: 0.12rem !important;
 }
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }
 address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
@@ -58,4 +61,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 .ks-clear, .clear {
     *zoom: 1;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
 }

@@ -1,17 +1,23 @@
 <template>
     <div>
         <div class="dataEquipment">
+            <on-off></on-off>
             <data-equipment></data-equipment>
+            <echarts-data></echarts-data>
         </div>
     </div>
 </template>
 
 <script>
     import DataEquipment from './common/Equipment'
+    import OnOff from './common/OnOff'
+    import echartsData from './common/echartData'
     export default {
         name:'BaseLeft',
         components:{
-            DataEquipment
+            DataEquipment,
+            OnOff,
+            echartsData
         },
         data(){
             return{}

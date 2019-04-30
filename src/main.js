@@ -3,10 +3,14 @@ import App from './App.vue'
 import router from './router'
 import axios from './axios/http'
 import store from './store'
+import echarts from 'echarts'
 import 'lib-flexible'
 import './assets/styles/reset.css'
+import './assets/iconFont/iconfont'
+
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+Vue.prototype.$echarts = echarts;
 
 window.console.log(process.env.VUE_APP_URL);
 

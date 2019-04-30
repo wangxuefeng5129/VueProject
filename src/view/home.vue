@@ -34,7 +34,7 @@
     .main{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin-top: 0.32rem;
     }
 </style>
