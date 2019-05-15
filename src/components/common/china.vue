@@ -917,12 +917,15 @@
 <script>
     export default {
         data(){
-            return{}
+            return{
+                location:[]
+            }
         },
         mounted(){
-          this.initMap()
+            this.ListDeviceLation();
         },
         methods:{
+
             initMap(){
                 var content=`<table>
         <thead>
@@ -950,30 +953,22 @@
                     title : "信息窗口" , // 信息窗口标题
                     enableMessage:true//设置允许信息窗发送短息
                 };
+
                 var myIcon = new BMap.Icon(require('./../../assets/images/jing.png'), new BMap.Size(80,50));
-                var point = [[121.478204,30.974512],[121.530522,30.990363],[121.634006,30.980952],[121.866272,31.08888],[121.671376,30.929915],
-                [121.379319,30.833714],[121.339075,30.964603],[121.201095,30.857525],[121.271235,31.075025],[121.416688,31.132907],[121.099335,31.068096],
-                    [121.115433,30.919011],[121.314353,31.342369],[121.275259,31.448403],[121.169475,31.577453],[120.951007,31.573023],[120.822226,31.334474],
-                    [121.281871,31.024782],[121.32039,31.126477],[121.522473,31.135132],[121.26951,31.146259],[121.398579,30.980704],[121.59405,31.135132],
-                    [121.335625,31.191001],[121.569616,31.193719],[121.187297,31.113369],[121.369545,31.048298],[121.541445,30.995317],[121.481366,30.960392],
-                    [121.156827,30.890504],[121.196496,30.977732],[121.3385,30.995069],[121.363509,31.073787],[121.261461,31.080221],[121.412951,31.098776],
-                    [121.196208,31.102486],[121.225242,31.120295],[121.127506,31.092096],[121.172062,31.148484],[121.244214,31.172958],[121.30573,31.215958],
-                    [121.287045,30.926694],[121.433361,30.962869],[121.469581,30.930907],[121.374145,30.90637],[121.486828,30.885794],[121.378169,30.876124],
-                    [121.228116,30.893975],[121.320103,30.880091]
-                ];
+                var point = this.location;
                 var markers = [];
                 var pt = null;
                 var i = 0;
                 for (; i <point.length; i++) {
-                    pt = new BMap.Point(...point[i]);
+                    pt = new BMap.Point(point[i].longitude,point[i].latitude);
                     var marker = new BMap.Marker(pt,{icon:myIcon});
                     markers.push(marker);
                     addClickHandler(content,marker);
-                    console.log(pt)
+                    /*console.log(pt)*/
                 }
+                console.log(markers);
                 //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
-                var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
-
+                var markerClusterer = new this.$BMapLib.MarkerClusterer(map, {markers:markers});
 
                 function addClickHandler(content,marker){
                     marker.addEventListener("click",function(e){
@@ -986,6 +981,24 @@
                     var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
                     map.openInfoWindow(infoWindow,point); //开启信息窗口
                 }
+            },
+            ListDeviceLation(){
+                this.$axios.get('Statistics/ListDeviceLatLon').then((response)=>{
+                    if(response.status === 200){
+                        let res = response.data;
+                        this.location = res.data;
+                        this.initMap();
+                    }
+                });
+            },
+            bd_encrypt(x,y){
+                var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+                var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
+                var theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
+                var bd_lon = z * Math.cos(theta) + 0.0065;
+                var bd_lat = z * Math.sin(theta) + 0.006;
+                var pt =new BMap.Point(bd_lon, bd_lat);
+                return pt;
             }
         }
     }

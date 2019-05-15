@@ -94,4 +94,8 @@
     table tbody::-webkit-scrollbar {
         display: none; // 隐藏滚动条
     }
+
+    thead tr th{
+        color: @tableColor;
+    }
 </style>

@@ -6,9 +6,14 @@
             </div>
 
             <div class="dangerData">
-                <span>报警数:100</span>
-                <span>处理数:90</span>
-                <span>未处理数:10</span>
+                <span>报警数:{{$store.state.wxf.alarms.alarmTotal}}</span>
+                <span>处理数:{{$store.state.wxf.alarms.alarmProcessedTotal}}</span>
+                <span>未处理数:{{$store.state.wxf.alarms.alarmUndisposedTotal}}</span>
+            </div>
+            <div class="sty1">
+                选择页面:<select  @change="getPages" v-model="number" >
+                <option :value="item" v-for="(item,index) in pages" :key="index">{{item}}</option>
+            </select>
             </div>
             <div>
                 <table  class="data">
@@ -21,11 +26,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(item,index) in data_message" :key="index">
-                        <td style="width: 1rem">{{item.warnName}}</td>
-                        <td nowrap>{{item.warnLocation}}</td>
-                        <td nowrap>{{item.warnRes}}</td>
-                        <td style="width: 0.6rem;">{{item.warnSee}}</td>
+                    <tr v-for="(item,index) in data_message" :key="index" class="reason">
+                        <td style="width: 1rem">{{item.deviceType}}</td>
+                        <td nowrap :title='item.deviceAddress'>{{item.deviceAddress}}</td>
+                        <td nowrap :title="item.alarmMessage">{{item.alarmMessage}}</td>
+                        <td style="width: 0.6rem;">{{item.processed}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -41,15 +46,29 @@
         },
         data(){
             return{
-                data_message:[
-                    {warnName:'井盖',warnLocation:'上海市奉贤区奉浦大道',warnRes:'进水',warnSee:'是'},
-                    {warnName:'电箱',warnLocation:'上海市奉贤区奉浦大道',warnRes:'电箱打开',warnSee:'是'},
-                    {warnName:'路灯',warnLocation:'上海市奉贤区奉浦大道',warnRes:'路灯不亮',warnSee:'否'},
-                    {warnName:'广交箱',warnLocation:'上海市奉贤区奉浦大道',warnRes:'电箱打开',warnSee:'是'},
-                    {warnName:'地埋柜',warnLocation:'上海市奉贤区奉浦大道',warnRes:'柜门打开',warnSee:'否'},
-
-                ]
+                pages:1,
+                number:'1',
+                data_message:[],
             }
+        },
+        mounted(){
+          this.getPages()
+        },
+        methods:{
+            getPages(){
+                this.$axios.get('Statistics/ListDeviceAlarm',{
+                    params:{
+                        pageNumber:this.number,
+                        pageSize:10
+                    }
+                }).then((response)=>{
+                    if(response.status === 200){
+                        let res = response.data;
+                        this.data_message = res.data.list;
+                        this.pages = res.data.navigatepageNums;
+                    }
+                })
+            },
         }
     }
 </script>
@@ -101,5 +120,26 @@
     }
     table tbody::-webkit-scrollbar {
         display: none; // 隐藏滚动条
+    }
+
+    thead tr th{
+        color:@tableColor
+    }
+    .reason td{
+        text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        -moz-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        overflow:hidden;
+        white-space:nowrap;
+    }
+    .sty1{
+        float: right;
+        margin-right:0.6rem;
+        padding-top: 0.2rem;
+    }
+    .seeAll{
+        position: absolute;
+        top:0.2rem;
     }
 </style>

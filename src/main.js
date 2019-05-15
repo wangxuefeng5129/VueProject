@@ -7,13 +7,17 @@ import echarts from 'echarts'
 import 'lib-flexible'
 import './assets/styles/reset.css'
 import './assets/iconFont/iconfont'
-
+import './until/MarkerClusterer_min'
+import BaiduMap from 'vue-baidu-map'
+import {BmlMarkerClusterer} from 'vue-baidu-map'
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 Vue.prototype.$echarts = echarts;
-
+Vue.component('bml-marker-clusterer',BmlMarkerClusterer);
+Vue.use(BaiduMap,{
+  ak:'DD279b2a90afdf0ae7a3796787a0742e'
+});
 window.console.log(process.env.VUE_APP_URL);
-
 new Vue({
   store,
   router,

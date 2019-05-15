@@ -1,21 +1,51 @@
 <template>
     <div>
         <div class="header">
-            <span class="data">
-                <span>2016年12月20日</span>
-                <span>星期六</span>
-            </span>
-            <span class="title">上海汇珏智能设备展示</span>
-            <span class="message">通知钢卡是否健康的角度</span>
+            <div class="data">
+                <span>{{setTime | formatDate}}</span>
+            </div>
+            <div class="title">上海汇珏智能设备综合展示</div>
+            <div class="message">中文/English</div>
         </div>
     </div>
 </template>
 
 <script>
+    import {formatDate} from "../../until/date";
     export default {
         name:'BaseHeader',
         data(){
             return{
+                setTime:new Date()
+            }
+        },
+        mounted(){
+           var _this = this;
+            /*定时器每秒执行更新时间*/
+          this.timer = setInterval(function () {
+              _this.setTime=new Date()
+          },1000);
+
+        },
+        beforeDestroy(){
+            /*销毁定时器*/
+          if(this.timer){
+              clearInterval(this.timer)
+          }
+        },
+        methods:{
+
+        },
+        filters: {
+            /*时间过滤器*/
+            formatDate: function(time) {
+                if(time!=null && time!=="")
+                {
+                    var date = new Date(time);
+                    return formatDate(date, "yyyy年MM月dd号hh时mm分ss秒");
+                }else{
+                    return "";
+                }
             }
         }
     }
@@ -28,11 +58,14 @@
         display: flex;
         flex-direction: row;
         justify-content:space-between;
+        height: 0.64rem;
         box-shadow:
                 -7.6rem 0.01rem 0.1rem rgba(6,97,194,1),
                 7.6rem 0.01rem 0.1rem rgba(6,97,194,1)
     };
     .header .title{
+        flex-grow: 3;
+        text-align: center;
         font-size: 0.32rem;
         line-height: @baseLine;
         text-shadow: 0 0 0.03rem rgba(37,206,232,1),
@@ -49,13 +82,15 @@
     .data{
         font-size: @baseFont;
         line-height: @baseLine;
-        span{
-            margin-left:0.3rem;
-        }
+        text-align: left;
+        padding-left: 0.32rem;
+        width: 3rem;
     }
     .message{
+        width: 3rem;
         font-size: @baseFont;
-        margin-right: 0.3rem;
+        text-align: right;
+        padding-right: 0.32rem;
         line-height: @baseLine;
     }
 </style>

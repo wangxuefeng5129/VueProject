@@ -28,7 +28,7 @@ axios.interceptors.request.use((config)=>{
     removePending(config); //在一个ajax发送前执行一下取消操作
     config.cancelToken = new cancelToken((c)=>{
         // 这里的ajax标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
-        pending.push({ u: config.url + '&' + config.method, f: c });
+        pending.push({ u: config.url /*+ '&' + config.method, f: c */});
     });
     window.console.log(pending);
     return config
@@ -39,7 +39,7 @@ axios.interceptors.request.use((config)=>{
 //添加响应拦截器
 axios.interceptors.response.use((res)=>{
     //对响应数据做些事
-    window.console.log(res);
+    /*window.console.log(res);*/
     removePending(res.config);  //在一个ajax响应后再执行一下取消操作，把已经完成的请求从pending中移除
     if(res.data.status === 400){
         //全局登陆过滤，当判读token失效或者没有登录时 返回登陆页面

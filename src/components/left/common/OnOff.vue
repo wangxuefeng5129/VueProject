@@ -1,7 +1,7 @@
 <template>
     <div style="margin-bottom: 0.2rem">
         <div class="header">
-            <p>当前在线/故障设备</p>
+            <p>当前正常/故障设备</p>
             <p>Current on-line/fault devices</p>
         </div>
         <div class="OnOff">
@@ -12,8 +12,8 @@
                     </svg>
                 </div>
                 <div class="data">
-                    <p>在线设备数</p>
-                    <p>100</p>
+                    <p>正常设备数</p>
+                    <p>{{$store.state.wxf.statisticData.normalStates}}</p>
                 </div>
             </div>
             <div class="OnOffD">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="data">
                     <p>故障设备数</p>
-                    <p>20</p>
+                    <p>{{$store.state.wxf.statisticData.alarms+$store.state.wxf.statisticData.offlines}}</p>
                 </div>
             </div>
         </div>

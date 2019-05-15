@@ -25,6 +25,9 @@
         data(){
             return{
             }
+        },
+        created(){
+            this.$store.dispatch('OnlineFault');
         }
     }
 </script>

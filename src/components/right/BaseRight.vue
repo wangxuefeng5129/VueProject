@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-left: 0.4rem">
+    <div style="margin-left: 0.4rem" class="baseRight">
         <warn-data></warn-data>
         <search-eqip></search-eqip>
         <person-data></person-data>
@@ -24,7 +24,12 @@
 </script>
 
 <style scoped lang="less">
-
+    .baseRight{
+        border: 2px solid deepskyblue;
+        border-radius:25px;
+        box-shadow: 0px 0px 10px inset;
+        width: 5.2rem;
+    }
 </style>
 
 

@@ -47,7 +47,6 @@
                     {equipmentName:'路灯',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
                     {equipmentName:'广交箱',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
                     {equipmentName:'地埋柜',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-
                 ]
             }
         }
@@ -90,5 +89,9 @@
     }
     table tbody::-webkit-scrollbar {
         display: none; // 隐藏滚动条
+    }
+
+    thead tr th{
+        color: @tableColor;
     }
 </style>

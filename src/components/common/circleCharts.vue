@@ -3,6 +3,7 @@
 </template>
 
 <script>
+    import '../../assets/styles/common.less'
     export default {
         name:'circleCharts',
         props:{
@@ -33,20 +34,27 @@
                 myChart.setOption({
                     title : {
                         text:this.title,
-                        x:'right',
+                        x:'center',
                         textStyle:{
-                            fontSize:12
+                            fontSize:'0.12rem',
+                            color:'orange'
                         }
                     },
                     tooltip : {
                         trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        formatter: "{a} <br/>{b} : {c} ({d}%)",
+                        textStyle:{
+                            fontSize:'0.12rem'
+                        }
                     },
-                    legend: {
+                    /*legend: {
                         orient: 'vertical',
                         left: 'left',
+                        textStyle:{
+                          fontSize:'100%'
+                        },
                         data: [this.on,this.off]
-                    },
+                    },*/
                     series : [
                         {
                             name: '访问来源',
@@ -61,7 +69,13 @@
                                 emphasis: {
                                     shadowBlur: 10,
                                     shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                }
+                            },
+                            label:{
+                                normal:{
+                                    position:'outer',
+                                    fontSize:'100%'
                                 }
                             }
                         }
