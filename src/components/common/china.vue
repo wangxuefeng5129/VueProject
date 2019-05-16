@@ -927,17 +927,21 @@
         methods:{
 
             initMap(){
-                var content=`<table>
+                var content=`<table border="1" class="equipMessage" style="text-align: center ;">
         <thead>
         <tr>
             <th>设备名称</th>
-            <th>在库（有效）设备数</th>
+            <th>设备位置</th>
+            <th>设备状态</th>
+            <th>故障类型</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>归属感</td>
-            <td>的是根深蒂固</td>
+            <td>地埋柜</td>
+            <td>上海市松江区</td>
+            <td>良好</td>
+            <td>没有故障发生</td>
         </tr>
         </tbody>
     </table>`;
@@ -945,12 +949,18 @@
 
                 var map = new BMap.Map("container");
                 map.centerAndZoom(new BMap.Point(121.47939,31.23667), 12);
+                map.setCurrentCity("广州");
                 map.enableScrollWheelZoom();
                 map.setMapStyle({style:'midnight'});
+                map.addControl(new BMap.MapTypeControl({
+                    mapTypes:[
+                        BMAP_NORMAL_MAP,
+                        BMAP_HYBRID_MAP,
+                    ]}));
+                map.setCurrentCity("北京市");  //设置当前城市
                 var opts = {
-                    width : 250,     // 信息窗口宽度
-                    height: 80,     // 信息窗口高度
-                    title : "信息窗口" , // 信息窗口标题
+                    width : 0,     // 信息窗口宽度
+                    height: 0,     // 信息窗口高度
                     enableMessage:true//设置允许信息窗发送短息
                 };
 
@@ -960,7 +970,8 @@
                 var pt = null;
                 var i = 0;
                 for (; i <point.length; i++) {
-                    pt = new BMap.Point(point[i].longitude,point[i].latitude);
+                    pt = this.bd_encrypt(point[i].longitude, point[i].latitude);
+                    console.log(pt)
                     var marker = new BMap.Marker(pt,{icon:myIcon});
                     markers.push(marker);
                     addClickHandler(content,marker);
@@ -968,7 +979,8 @@
                 }
                 console.log(markers);
                 //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
-                var markerClusterer = new this.$BMapLib.MarkerClusterer(map, {markers:markers});
+                var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+                markerClusterer.setMinClusterSize(2);
 
                 function addClickHandler(content,marker){
                     marker.addEventListener("click",function(e){

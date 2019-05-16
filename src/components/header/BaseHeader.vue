@@ -4,7 +4,7 @@
             <div class="data">
                 <span>{{setTime | formatDate}}</span>
             </div>
-            <div class="title">上海汇珏智能设备综合展示</div>
+            <div class="title">上海汇珏智慧互联平台综合展示</div>
             <div class="message">中文/English</div>
         </div>
     </div>

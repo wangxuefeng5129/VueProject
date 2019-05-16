@@ -7,7 +7,6 @@ import echarts from 'echarts'
 import 'lib-flexible'
 import './assets/styles/reset.css'
 import './assets/iconFont/iconfont'
-import './until/MarkerClusterer_min'
 import BaiduMap from 'vue-baidu-map'
 import {BmlMarkerClusterer} from 'vue-baidu-map'
 Vue.config.productionTip = false;
