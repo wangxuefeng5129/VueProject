@@ -24,12 +24,12 @@
 </script>
 
 <style scoped lang="less">
-    .baseRight{
+    /*.baseRight{
         border: 2px solid deepskyblue;
         border-radius:25px;
         box-shadow: 0px 0px 10px inset;
         width: 5.2rem;
-    }
+    }*/
 </style>
 
 

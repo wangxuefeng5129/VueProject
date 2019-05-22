@@ -47,10 +47,11 @@
         position: relative;
     }
     .progress{
-        height: 0.1rem;
-        width:70%;
+        height: 0.06rem;
+        width:0.64rem;
+        top: 0.04rem;
+        left: 0.3rem;
         position: absolute;
-        top: 0.1rem;
         overflow: hidden;
         background-color: #f5f5f5;
         border-radius: 0.4rem;
@@ -60,7 +61,6 @@
         width: 0;
         height: 100%;
         font-size: 0.12rem;
-        line-height: 0.2rem;
         color: #fff;
         text-align: center;
         background-color: #337ab7;

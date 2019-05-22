@@ -38,6 +38,6 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        margin-top: 0.32rem;
+        margin-top: 0.6rem;
     }
 </style>

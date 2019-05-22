@@ -1,12 +1,14 @@
 <template>
-    <div>
-        <div class="NumberTitle">
-            <p>在线/故障设备数占比</p>
-            <p>Number of on-line/fault devices</p>
+    <div style="margin-top: 0.3rem">
+        <div class="commonTitle title">
+            <span>正常/故障设备数占比</span>
+            <span>Number of on-line/fault devices</span>
         </div>
-        <circle-charts  :circleId="hourCircle" :on="On" :off="off" :title="'24小时'+title"></circle-charts>
-        <circle-charts  :circleId="weekCircle" :on="On" :off="off" :title="'本周'+title"></circle-charts>
-        <circle-charts  :circleId="monthCircle" :on="On" :off="off" :title="'本月'+title"></circle-charts>
+        <div class="bg">
+            <circle-charts  :circleId="hourCircle" :on="On" :off="off" :title="'24小时'+title"></circle-charts>
+            <circle-charts  :circleId="weekCircle" :on="On" :off="off" :title="'本周'+title"></circle-charts>
+            <circle-charts  :circleId="monthCircle" :on="On" :off="off" :title="'本月'+title"></circle-charts>
+        </div>
     </div>
 </template>
 
@@ -34,12 +36,13 @@
 
 <style lang="less" scoped>
     @import '../../assets/styles/common';
-    .NumberTitle{
-        text-align:left;
-        margin-top: 0.4rem;
-        margin-bottom: 0.26rem;
-        p{
-            font-size:@baseFont;
-        }
+    .title{
+        margin-bottom:0.2rem;
+    }
+    .bg{
+        background: url("./../../assets/images/bottom.png") no-repeat center center;
+        background-size: cover;
+        width: 8.36rem;
+        height: 2.5rem;
     }
 </style>

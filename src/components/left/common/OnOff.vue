@@ -1,30 +1,32 @@
 <template>
-    <div style="margin-bottom: 0.2rem">
-        <div class="header">
-            <p>当前正常/故障设备</p>
-            <p>Current on-line/fault devices</p>
+    <div style="margin-left: 0.3rem">
+        <div class="commonTitle title">
+            <span>当前正常/故障</span>
+            <span>Current on-line/fault devices</span>
         </div>
-        <div class="OnOff">
-            <div class="OnOffD">
-                <div class="role">
-                    <svg class="icon" aria-hidden="true" style="font-size:0.6rem">
-                        <use xlink:href="#iconrenwu-zhengchang"></use>
-                    </svg>
+        <div class="top">
+            <div class="OnOff">
+                <div class="OnOffDL">
+                    <div class="role">
+                        <svg class="icon" aria-hidden="true" style="font-size:0.52rem">
+                            <use xlink:href="#iconrenwu-zhengchang"></use>
+                        </svg>
+                    </div>
+                    <div class="data">
+                        <p class="equNumber">正常设备数</p>
+                        <p class="number1">{{$store.state.wxf.statisticData.normalStates}}</p>
+                    </div>
                 </div>
-                <div class="data">
-                    <p>正常设备数</p>
-                    <p>{{$store.state.wxf.statisticData.normalStates}}</p>
-                </div>
-            </div>
-            <div class="OnOffD">
-                <div class="role">
-                    <svg class="icon" aria-hidden="true" style="font-size:0.6rem">
-                        <use xlink:href="#iconrenwu-yichang"></use>
-                    </svg>
-                </div>
-                <div class="data">
-                    <p>故障设备数</p>
-                    <p>{{$store.state.wxf.statisticData.alarms+$store.state.wxf.statisticData.offlines}}</p>
+                <div class="OnOffDR">
+                    <div class="role">
+                        <svg class="icon" aria-hidden="true" style="font-size:0.52rem">
+                            <use xlink:href="#iconrenwu-yichang"></use>
+                        </svg>
+                    </div>
+                    <div class="data">
+                        <p class="equNumber">故障设备数</p>
+                        <p class="number2">{{$store.state.wxf.statisticData.alarms+$store.state.wxf.statisticData.offlines}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,33 +44,42 @@
 
 <style scoped lang="less">
     @import '../../../assets/styles/common';
-    .header{
-        text-align: left;
-        margin-left: 0.3rem;
-        margin-bottom: 0.24rem;
-        p{
-            font-size: @baseFont;
-        }
+    .title{
+        margin-bottom: 0.2rem;
+    }
+    .top{
+        background: url("./../../../assets/images/left.png") no-repeat center center;
+        background-size: cover;
+        height: 2.5rem;
+        width: 4.71rem;
     }
     .OnOff{
-        margin-left: 0.3rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        .OnOffD{
-            margin-left: 0.3rem;
-            margin-right: 1.6rem;
-            .role{
-                margin-bottom: 0.3rem;
-            }
-            .data{
-                text-align: center;
-                p:nth-child(2){
-                    font-size: 0.38rem;
-                    margin-top: 0.12rem;
-                    color: RGB(203,62,78);
-                }
-            }
+        padding-top: 0.59rem;
+        .OnOffDL{
+            margin-left: 1.2rem;
+            float: left;
         }
+        .OnOffDR{
+            margin-right: 1.2rem;
+            float: right;
+        }
+    }
+    .equNumber{
+        margin-top: 0.36rem;
+        margin-bottom: 0.26rem;
+        font-size: 0.14rem;
+        color:#ffffff;
+    }
+    .number1{
+        font-size: 0.4rem;
+        background: -webkit-linear-gradient(top, #11f1ff , #4c48c0);     /* 背景色渐变 */
+        -webkit-background-clip: text;         /* 规定背景的划分区域 */
+        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+    }
+    .number2{
+        font-size: 0.4rem;
+        background: -webkit-linear-gradient(top, #ffff00 , #ff6e02);     /* 背景色渐变 */
+        -webkit-background-clip: text;         /* 规定背景的划分区域 */
+        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
     }
 </style>

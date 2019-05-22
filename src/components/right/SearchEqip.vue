@@ -1,10 +1,18 @@
 <template>
-    <div class="search">
-        设备地址:<input type="text" placeholder="请输入设备信息..." v-model="searchVal">
-        <div v-for="(item,index) in items" :key="index" style="border-bottom: 1px yellow solid">
-            <div class="status">名称:{{item.deviceName}}</div>
-            <div class="status">地址:{{item.deviceAddress}}</div>
-            <div class="status">最后更新时间:{{item.uploadtime}}</div>
+    <div style="margin-top: 0.3rem">
+        <div class="commonTitle title">
+            <span>搜索设备</span>
+            <span>Device data</span>
+        </div>
+        <div class="search">
+            <div>
+                设备地址:<input type="text" placeholder="请输入设备信息..." v-model="searchVal">
+            </div>
+            <div v-for="(item,index) in items" :key="index" style="border-bottom: 1px yellow solid">
+                <div class="status">名称:{{item.deviceName}}</div>
+                <div class="status">地址:{{item.deviceAddress}}</div>
+                <div class="status">最后更新时间:{{item.uploadtime}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -54,11 +62,12 @@
         border-radius:0.04rem;
     }
     .search{
-        border: 1px gray solid;
-        width: 4.6rem;
-        height: 2.6rem;
-        margin-left: 0.3rem;
+        background: url("./../../assets/images/right.png") no-repeat center center;
+        background-size: cover;
+        width: 4.71rem;
+        height: 2.5rem;
         overflow-y: scroll;
+        margin-top: 0.2rem;
     }
     .search::-webkit-scrollbar {
         display: none; // 隐藏滚动条

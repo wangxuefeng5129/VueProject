@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top: 0.5rem ; margin-left: 0.4rem">
         <china></china>
         <!--<chinas></chinas>-->
         <of-proportion></of-proportion>

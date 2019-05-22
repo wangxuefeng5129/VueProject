@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div style="margin-left: 0.3rem">
+        <div class="commonTitle title">
+            <span>设备数据</span>
+            <span>Devices data</span>
+        </div>
         <div class="equipment">
-            <div class="equipment_title">
-                <p>设备数据</p>
-                <p>Device data</p>
-            </div>
-            <div>
-                <table  class="data">
+            <div style="padding-top: 0.3rem">
+                <table class="data">
                     <thead>
                     <tr class="data_title">
                         <th>设备名称</th>
@@ -16,15 +16,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(item,index) in data_message" :key="index">
-                        <td>{{item.equipmentName}}</td>
-                        <td>{{item.equipmentUse}}</td>
-                        <td>{{item.equipmentThrow}}</td>
-                        <td>
-                            <progress-bar :value=item.equipmentProportion :max=100 animate="animate"></progress-bar>
-                            <span style="float: right; line-height: 0.3rem">{{item.equipmentProportion}}%</span>
-                        </td>
-                    </tr>
+                        <tr v-for="(item,index) in data_message" :key="index" style="margin-bottom: 0.16rem">
+                            <td>{{item.equipmentName}}</td>
+                            <td>{{item.equipmentUse}}</td>
+                            <td>{{item.equipmentThrow}}</td>
+                            <td style="position: relative">
+                                <progress-bar :value=item.equipmentProportion :max=100 animate="animate"></progress-bar>
+                                <span style="position: absolute ;left: 1rem">{{item.equipmentProportion}}%</span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -55,32 +55,51 @@
 
 <style scoped lang="less">
     @import '../../../assets/styles/common';
-    .equipment_title{
-        font-size: @baseFont;
-        margin-left: 0.3rem;
-        margin-bottom: 0.2rem;
-        p{
-            text-align: left;
-
-        }
+    .title{
+        margin-top: 0.3rem;
+        margin-bottom:0.2rem;
+    }
+    .equipment{
+        background: url("./../../../assets/images/left.png") no-repeat center center;
+        background-size: cover;
+        height: 2.5rem;
+        width: 4.72rem;
     }
     .data{
-        width: 4.4rem;
-        line-height: 0.3rem;
-        text-align: left;
-        margin-left: 0.3rem;
-        tr{
-            border-bottom: 1px solid gray;
-        };
+        margin-left: 0.1rem;
+        margin-right:0.1rem ;
+        font-size: 0.12rem;
         .data_title{
-            color: RGB(60,55,86);
+            color: #ffffff;
+            th:nth-child(4){
+                width:1.5rem;
+                background: -webkit-linear-gradient(top, rgba(255,255,255,0) , #6423cf);     /* 背景色渐变 */
+            }
+            th:nth-child(2){
+                width: 1.1rem;
+                background: -webkit-linear-gradient(top, rgba(255,255,255,0) , #6423cf);     /* 背景色渐变 */
+            }
+            th{
+                background: -webkit-linear-gradient(top, rgba(255,255,255,0) , #2a95d6);     /* 背景色渐变 */
+            }
         }
     }
     tbody{
-        height:1.8rem;
+        margin-top: 0.2rem;
         display: block;
         overflow-y:scroll;
         -webkit-overflow-scrolling: touch; // 为了滚动顺畅
+        tr{
+            text-align: center;
+            td:nth-child(2){
+                width: 1.1rem;
+                text-align: center;
+            }
+            td:nth-child(4){
+                width: 1.5rem;
+                text-align: center;
+            }
+        }
     }
     table thead, tbody tr {
         display:table;
@@ -89,9 +108,5 @@
     }
     table tbody::-webkit-scrollbar {
         display: none; // 隐藏滚动条
-    }
-
-    thead tr th{
-        color: @tableColor;
     }
 </style>

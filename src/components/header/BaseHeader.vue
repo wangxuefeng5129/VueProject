@@ -1,13 +1,12 @@
 <template>
-    <div>
         <div class="header">
             <div class="data">
                 <span>{{setTime | formatDate}}</span>
+                <span style="margin-left: 0.16rem">{{setTime | formatDateHour}}</span>
             </div>
-            <div class="title">上海汇珏智慧互联平台综合展示</div>
+            <div class="title">上海汇珏智能设备展示</div>
             <div class="message">中文/English</div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -42,7 +41,16 @@
                 if(time!=null && time!=="")
                 {
                     var date = new Date(time);
-                    return formatDate(date, "yyyy年MM月dd号hh时mm分ss秒");
+                    return formatDate(date, "yyyy年MM月dd日");
+                }else{
+                    return "";
+                }
+            },
+            formatDateHour: function(time) {
+                if(time!=null && time!=="")
+                {
+                    var date = new Date(time);
+                    return formatDate(date, "hh:mm:ss");
                 }else{
                     return "";
                 }
@@ -55,15 +63,20 @@
     @import "../../assets/styles/common";
     @baseLine:0.64rem;
     .header{
-        display: flex;
-        flex-direction: row;
-        justify-content:space-between;
-        height: 0.64rem;
-        box-shadow:
+        height: 0.48rem;
+        position: relative;
+        /*box-shadow:
                 -7.6rem 0.01rem 0.1rem rgba(6,97,194,1),
-                7.6rem 0.01rem 0.1rem rgba(6,97,194,1)
+                7.6rem 0.01rem 0.1rem rgba(6,97,194,1)*/
     };
-    .header .title{
+    .title{
+        position: absolute;
+        width: 100%;
+        font-size: 0.34rem;
+        color:#ffffff;
+        margin:0.3rem auto;
+    }
+    /*.header .title{
         flex-grow: 3;
         text-align: center;
         font-size: 0.32rem;
@@ -78,19 +91,24 @@
         0 0 0.48rem rgba(37,206,232,0.5),
         0 0 0.54rem rgba(37,206,232,0.3),
         0 0 0.68rem rgba(37,206,232,0.1);
-    };
+    };*/
     .data{
-        font-size: @baseFont;
-        line-height: @baseLine;
-        text-align: left;
-        padding-left: 0.32rem;
+        float: left;
+        font-size: 0.2rem;
+        margin-top: 0.16rem;
+        color:#279ace;
         width: 3rem;
+        height: 0.3rem;
+        border:1px solid #113b7c;
+        border-radius: 0.15rem;
+        margin-left: 0.3rem;
     }
     .message{
-        width: 3rem;
-        font-size: @baseFont;
-        text-align: right;
-        padding-right: 0.32rem;
-        line-height: @baseLine;
+        float: right;
+        color: #2ec2ff;
+        font-size:0.22rem;
+        margin-right: 0.3rem;
+        margin-top: 0.16rem;
+
     }
 </style>

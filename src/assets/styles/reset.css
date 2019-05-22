@@ -9,8 +9,17 @@ KISSY CSS Reset
 维护：玉伯<lifesinger@gmail.com>, 正淳<ragecarrier@gmail.com>
  */
 body{
-    background-color: #090123;
     color:#ffffff;
+    background:url("./../images/bg.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-y:scroll;
+    overflow-x: scroll;
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 /** 清除内外边距 **/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
@@ -70,3 +79,4 @@ table { border-collapse: collapse; border-spacing: 0; }
     fill: currentColor;
     overflow: hidden;
 }
+

@@ -27,11 +27,9 @@
 
 <style scoped lang="less">
     .dataEquipment{
-        width: 5.2rem;
-        border: 2px solid deepskyblue;
-        border-radius:25px;
-        box-shadow: 0px 0px 10px inset;
-        margin-right: 0.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
 </style>

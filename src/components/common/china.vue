@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="container" :style="{width: '7.6rem',height: '5.6rem'}"></div>
+        <div id="container" :style="{width: '8.36rem',height: '5.78rem'}"></div>
     </div>
 
 
@@ -971,13 +971,10 @@
                 var i = 0;
                 for (; i <point.length; i++) {
                     pt = this.bd_encrypt(point[i].longitude, point[i].latitude);
-                    console.log(pt)
                     var marker = new BMap.Marker(pt,{icon:myIcon});
                     markers.push(marker);
                     addClickHandler(content,marker);
-                    /*console.log(pt)*/
                 }
-                console.log(markers);
                 //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
                 var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
                 markerClusterer.setMinClusterSize(2);
@@ -1003,6 +1000,8 @@
                     }
                 });
             },
+
+
             bd_encrypt(x,y){
                 var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
                 var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
