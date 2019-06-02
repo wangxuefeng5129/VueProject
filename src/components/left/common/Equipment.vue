@@ -17,7 +17,16 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item,index) in data_message" :key="index" style="margin-bottom: 0.16rem">
-                            <td>{{item.equipmentName}}</td>
+                            <td>
+                                <span>
+                                    <span v-if="item.id==1" class="iconfont">&#xe616;</span>
+                                    <span v-if="item.id==2" class="iconfont">&#xe615;</span>
+                                    <span v-if="item.id==3" class="iconfont">&#xe614;</span>
+                                    <span v-if="item.id==4" class="iconfont">&#xe612;</span>
+                                    <span v-if="item.id==5" class="iconfont">&#xe613;</span>
+                                </span>
+                                <span style="display: inline-block ; width: 0.4rem" >{{item.equipmentName}}</span>
+                            </td>
                             <td>{{item.equipmentUse}}</td>
                             <td>{{item.equipmentThrow}}</td>
                             <td style="position: relative">
@@ -42,11 +51,11 @@
         data(){
             return{
                 data_message:[
-                    {equipmentName:'井盖',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-                    {equipmentName:'电箱',equipmentUse:'200',equipmentThrow:'31',equipmentProportion:55},
-                    {equipmentName:'路灯',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-                    {equipmentName:'广交箱',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
-                    {equipmentName:'地埋柜',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45},
+                    {equipmentName:'井盖',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45 , id:'1'},
+                    {equipmentName:'电箱',equipmentUse:'200',equipmentThrow:'31',equipmentProportion:55 ,id:'2'},
+                    {equipmentName:'路灯',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45 , id:'3'},
+                    {equipmentName:'光交箱',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45 , id:'4'},
+                    {equipmentName:'地埋柜',equipmentUse:'100',equipmentThrow:'31',equipmentProportion:45 , id:'5'},
                 ]
             }
         }
@@ -55,6 +64,9 @@
 
 <style scoped lang="less">
     @import '../../../assets/styles/common';
+    .iconfont{
+        color: RGB(25,206,249);
+    }
     .title{
         margin-top: 0.3rem;
         margin-bottom:0.2rem;

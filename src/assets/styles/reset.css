@@ -17,10 +17,13 @@ body{
     background-size: cover;
     overflow-y:scroll;
     overflow-x: scroll;
+    -ms-overflow-style: none;
 }
 body::-webkit-scrollbar {
     display: none;
 }
+
+
 /** 清除内外边距 **/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
 dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
@@ -72,11 +75,11 @@ table { border-collapse: collapse; border-spacing: 0; }
     *zoom: 1;
 }
 
-.icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 0.16rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 

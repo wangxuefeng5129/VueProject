@@ -8,9 +8,7 @@
             <div class="OnOff">
                 <div class="OnOffDL">
                     <div class="role">
-                        <svg class="icon" aria-hidden="true" style="font-size:0.52rem">
-                            <use xlink:href="#iconrenwu-zhengchang"></use>
-                        </svg>
+                        <span class="iconfont normal">&#xe617;</span>
                     </div>
                     <div class="data">
                         <p class="equNumber">正常设备数</p>
@@ -19,9 +17,7 @@
                 </div>
                 <div class="OnOffDR">
                     <div class="role">
-                        <svg class="icon" aria-hidden="true" style="font-size:0.52rem">
-                            <use xlink:href="#iconrenwu-yichang"></use>
-                        </svg>
+                        <span class="iconfont offLine">&#xe617;</span>
                     </div>
                     <div class="data">
                         <p class="equNumber">故障设备数</p>
@@ -44,6 +40,20 @@
 
 <style scoped lang="less">
     @import '../../../assets/styles/common';
+    .normal,.offLine{
+        font-size: 0.52rem;
+
+    }
+    .normal,.number1{
+        background: -webkit-linear-gradient(top, #11f1ff , #4c48c0);
+        -webkit-background-clip: text;         /* 规定背景的划分区域 */
+        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+    }
+    .offLine,.number2{
+        background: -webkit-linear-gradient(top, #ffff00 , #ff6e02);     /* 背景色渐变 */
+        -webkit-background-clip: text;         /* 规定背景的划分区域 */
+        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+    }
     .title{
         margin-bottom: 0.2rem;
     }
@@ -72,14 +82,9 @@
     }
     .number1{
         font-size: 0.4rem;
-        background: -webkit-linear-gradient(top, #11f1ff , #4c48c0);     /* 背景色渐变 */
-        -webkit-background-clip: text;         /* 规定背景的划分区域 */
-        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
     }
     .number2{
         font-size: 0.4rem;
-        background: -webkit-linear-gradient(top, #ffff00 , #ff6e02);     /* 背景色渐变 */
-        -webkit-background-clip: text;         /* 规定背景的划分区域 */
-        -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+
     }
 </style>

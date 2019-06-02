@@ -32,16 +32,33 @@
         },
         methods:{
             Getscreen(){
-              if(document.body.clientWidth >=1920 && document.body.clientWidth <=3000){
-                  this.itemWidth=30;
-                  this.itemHeight=15;
-                  this.itemGap=20;
-              }
-              if(document.body.clientWidth >= 3000){
-                  this.itemWidth=65;
-                  this.itemHeight=30;
-                  this.itemGap=70;
-              }
+                let w = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+                var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+                var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+                var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
+                var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+                if(w >=1920 && w <=3000){
+                    this.itemWidth=30;
+                    this.itemHeight=15;
+                    this.itemGap=20;
+                    if(isIE11){
+                        this.itemGap=50
+                    }
+                    if(isIE){
+                        this.itemGap=50
+                    }
+                }
+                if(w >= 3000){
+                    this.itemWidth=65;
+                    this.itemHeight=30;
+                    this.itemGap=70;
+                    if(isIE11){
+                        this.itemGap=100
+                    }
+                    if(isIE){
+                        this.itemGap=100
+                    }
+                }
             },
             drawline(){
                 this.Getscreen();
@@ -80,7 +97,7 @@
                         {
                             name: '访问来源',
                             type: 'pie',
-                            radius : '30%',
+                            radius: ['20%', '30%'],
                             center: ['50%', '55%'],
                             data:[
                                 {value:335, name:this.on,itemStyle:{
@@ -124,7 +141,7 @@
                                 emphasis: {
                                     shadowBlur: 10,
                                     shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                    shadowColor: 'rgba(0, 0, 0, 1)',
                                 }
                             },
                             label:{

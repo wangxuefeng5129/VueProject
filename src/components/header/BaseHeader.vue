@@ -1,6 +1,7 @@
 <template>
         <div class="header">
             <div class="data">
+                <span class="iconfont" style="margin-right: 0.09rem; font-size: 0.2rem">&#xe611;</span>
                 <span>{{setTime | formatDate}}</span>
                 <span style="margin-left: 0.16rem">{{setTime | formatDateHour}}</span>
             </div>
@@ -99,6 +100,7 @@
         color:#279ace;
         width: 3rem;
         height: 0.3rem;
+        line-height: 0.3rem;
         border:1px solid #113b7c;
         border-radius: 0.15rem;
         margin-left: 0.3rem;

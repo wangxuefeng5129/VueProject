@@ -28,7 +28,10 @@
                         </thead>
                         <tbody id="scrolls">
                         <tr v-for="(item,index) in data_message" :key="index" class="reason" style="margin-bottom: 0.16rem">
-                            <td>{{item.deviceType}}</td>
+                            <td>
+                                <span class="iconfont">&#xe613;</span>
+                                <span style="width: 0.6rem ; display: inline-block">{{item.deviceType}}</span>
+                            </td>
                             <td nowrap :title='item.deviceAddress' style="width: 1.5rem;">{{item.deviceAddress}}</td>
                             <td nowrap :title="item.alarmMessage">{{item.alarmMessage}}</td>
                             <td style="width: 1rem;">{{item.processed}}</td>
@@ -98,6 +101,9 @@
 
 <style scoped lang="less">
     @import '../../assets/styles/common';
+    .iconfont{
+        color:RGB(25,206,249)
+    }
     .title{
         margin-bottom: 0.2rem;
     }
