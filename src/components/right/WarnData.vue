@@ -1,7 +1,7 @@
 <template>
         <div class="equipment">
             <div class="commonTitle title">
-                <span>告警信息列表</span>
+                <span>告警信息列表111</span>
                 <span>Device data</span>
             </div>
 
