@@ -18,6 +18,12 @@
             },
             off:{
                 type:String
+            },
+            OnValues:{
+              type:Number
+            },
+            OffValues:{
+              type:Number
             }
         },
         data(){
@@ -100,7 +106,7 @@
                             radius: ['20%', '30%'],
                             center: ['50%', '55%'],
                             data:[
-                                {value:335, name:this.on,itemStyle:{
+                                {value:this.OnValues, name:this.on,itemStyle:{
                                         normal:{
                                             color: new this.$echarts.graphic.LinearGradient(
                                                 0, 0, 0, 1,
@@ -118,7 +124,7 @@
                                         }
                                     }
                                 },
-                                {value:310, name:this.off,itemStyle:{
+                                {value:this.OffValues, name:this.off,itemStyle:{
                                         normal:{
                                             color: new this.$echarts.graphic.LinearGradient(
                                                 0, 0, 0, 1,

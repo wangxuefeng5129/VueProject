@@ -54,7 +54,7 @@
                     }
                 }
             },
-            getInterval(){
+            /*getInterval(){
               let _this = this;
               return _this.$axios.get('Statistics/OnlineFault').then(response=>{
                   if(response.status === 200){
@@ -63,7 +63,7 @@
                       console.log(this.Interval)
                   }
               })
-            },
+            },*/
             drawLine(){
                 /*return new Promise((resolve,reject)=>{
                     // 基于准备好的dom，初始化echarts实例
@@ -99,10 +99,9 @@
                     },
                     dataset: {
                         source: [
-                            ['product', this.Interval[2].starttime+'-'+this.Interval[2].endtime, this.Interval[1].starttime+'-'+this.Interval[1].endtime, this.Interval[0].starttime+'-'+this.Interval[0].endtime],
-                            ['24小时正常/故障数', this.Interval[2].sumtotal-this.Interval[2].faults, this.Interval[2].faults],
-                            ['本周正常/故障数', this.Interval[1].sumtotal-this.Interval[1].faults, this.Interval[1].faults],
-                            ['本月正常/故障数', this.Interval[0].sumtotal-this.Interval[0].faults, this.Interval[0].faults],
+                            ['24小时正常/故障数', 30, 6],
+                            ['本周正常/故障数', 34, 2],
+                            ['本月正常/故障数', 31, 5],
                         ]
                     },
                     grid:{
@@ -244,7 +243,7 @@
                 })
             },*/
             async showSort(){
-                await this.getInterval();
+                /*await this.getInterval();*/
                 await this.drawLine();
             }
         }

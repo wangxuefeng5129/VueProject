@@ -5,9 +5,9 @@
             <span>Number of on-line/fault devices</span>
         </div>
         <div class="bg">
-            <circle-charts  :circleId="hourCircle" :on="On" :off="off" :title="'24小时'+title"></circle-charts>
-            <circle-charts  :circleId="weekCircle" :on="On" :off="off" :title="'本周'+title"></circle-charts>
-            <circle-charts  :circleId="monthCircle" :on="On" :off="off" :title="'本月'+title"></circle-charts>
+            <circle-charts  :circleId="hourCircle" :on="On" :off="off" :title="'24小时'+title" :on-values=30 :off-values=6></circle-charts>
+            <circle-charts  :circleId="weekCircle" :on="On" :off="off" :title="'本周'+title" :on-values=34 :off-values=2></circle-charts>
+            <circle-charts  :circleId="monthCircle" :on="On" :off="off" :title="'本月'+title" :on-values=31 :off-values=5></circle-charts>
         </div>
     </div>
 </template>
