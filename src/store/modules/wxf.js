@@ -2,17 +2,24 @@ import axios from './../../axios/http'
 const state  = {
     statisticData:{},
     alarms:{},
+    faultDevices:'',
+    totalDevices:'',
+    onlineDevices:'',
+    devices:null,
 };
 
 const getters = {};
 
 const mutations = {
     ONLINEFAULT(state){
-        axios.get('Statistics/OnlineFault').then((response)=>{
+        axios.get('monitorScreen/listMonitoredEquipmentInfoVO').then((response)=>{
             if(response.status === 200){
                 let res = response.data.data;
-                state.statisticData = res.statisticData;
-                state.alarms = res.alarms;
+                state.devices = res.devices;
+                state.faultDevices=res.faultDevices;
+                state.onlineDevices=res.totalDevices-res.faultDevices;
+                state.totalDevices=res.totalDevices;
+                console.log(res);
 
             }
         })

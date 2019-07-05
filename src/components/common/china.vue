@@ -1,6 +1,12 @@
 <template>
-    <div>
+    <div style="position: relative">
         <div id="container" :style="{width: '8.36rem',height: '5.78rem'}"></div>
+        <ul class="listUl">
+            <li @click="changelist('lamppost')" class="list">智慧路灯</li>
+            <li @click="changelist('trace')" class="list">井盖</li>
+            <li @click="changelist('onu')" class="list">智能光交箱</li>
+            <li @click="changelist('cover')" class="list">地埋柜</li>
+        </ul>
     </div>
 
 
@@ -918,7 +924,8 @@
     export default {
         data(){
             return{
-                location:[]
+                location:[],
+                equipmentName:'lamppost'
             }
         },
         mounted(){
@@ -992,14 +999,26 @@
                 }
             },
             ListDeviceLation(){
-                this.$axios.get('Statistics/ListDeviceLatLon').then((response)=>{
+                this.$axios.get('monitorScreen/listMonitoredEquipmentMapsVO',{
+                  params:{
+                    flags:this.equipmentName
+                  }
+                }).then((response)=>{
                     if(response.status === 200){
                         let res = response.data;
-                        this.location = res.data;
+                        for (var i in res.data){
+                          this.location = res.data[i]
+                        }
+                        console.log(this.location)
                         this.initMap();
                     }
                 });
             },
+
+          changelist(item){
+              this.equipmentName=item;
+              this.ListDeviceLation()
+          },
 
 
             bd_encrypt(x,y){
@@ -1018,5 +1037,17 @@
 <style>
     .anchorBL{
         display:none;
+    }
+    .listUl{
+        position: absolute;
+        top:0.15rem;
+        right: 1rem;
+    }
+    .list{
+        color: #2a95d6;
+        float: left;
+        margin-left: .15rem;
+        font-size:0.14rem;
+        font-weight: bold;
     }
 </style>

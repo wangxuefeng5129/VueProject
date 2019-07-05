@@ -9,9 +9,8 @@
                 设备地址:<input type="text" placeholder="请输入设备信息..." v-model="searchVal">
             </div>
             <div v-for="(item,index) in items" :key="index" style="border-bottom: 1px yellow solid">
-                <div class="status">名称:{{item.deviceName}}</div>
-                <div class="status">地址:{{item.deviceAddress}}</div>
-                <div class="status">最后更新时间:{{item.uploadtime}}</div>
+                <div class="status">imei:{{item.imei}}</div>
+                <div class="status">地址:{{item.address}}</div>
             </div>
         </div>
     </div>
@@ -30,15 +29,21 @@
         },
         watch:{
           searchVal(newVal,oldVal){
-              this.$axios.get('Statistics/ListDevice',{
+            if(this.searchVal=== ''){
+              this.items=[]
+            }
+              this.$axios.get('monitorScreen/getEquipmentInfoByAddress',{
                   params:{
-                      deviceAddress:newVal,
+                    address:newVal,
                   }
               }).then((response)=>{
                   if(response.status === 200){
-                      let res = response.data;
-                      this.items = res.data;
-                      console.log(this.items)
+                      let res = response.data.data;
+                      for(var i in res){
+                        if(res[i].length>0){
+                          this.items.push(...res[i])
+                        }
+                      }
                   }
               })
           }

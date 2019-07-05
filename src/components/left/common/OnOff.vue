@@ -12,7 +12,7 @@
                     </div>
                     <div class="data">
                         <p class="equNumber">正常设备数</p>
-                        <p class="number1">{{$store.state.wxf.statisticData.normalStates}}</p>
+                        <p class="number1">{{$store.state.wxf.onlineDevices}}</p>
                     </div>
                 </div>
                 <div class="OnOffDR">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="data">
                         <p class="equNumber">故障设备数</p>
-                        <p class="number2">{{$store.state.wxf.statisticData.alarms+$store.state.wxf.statisticData.offlines}}</p>
+                        <p class="number2">{{$store.state.wxf.faultDevices}}</p>
                     </div>
                 </div>
             </div>

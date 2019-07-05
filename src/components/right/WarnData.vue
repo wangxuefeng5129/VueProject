@@ -54,10 +54,18 @@
                 pages:1,
                 number:'1',
                 data_message:[],
+                devices:null
             }
         },
         mounted(){
           this.getPages();
+          this.devices=this.$store.state.wxf.devices;
+          for(var i in this.devices){
+            if(this.devices[i].length>0){
+              this.data_message.push(...this.devices[i])
+            }
+          }
+          console.log(this.data_message)
         },
         methods:{
             getPages(){

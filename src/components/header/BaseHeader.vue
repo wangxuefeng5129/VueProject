@@ -5,7 +5,7 @@
                 <span>{{setTime | formatDate}}</span>
                 <span style="margin-left: 0.16rem">{{setTime | formatDateHour}}</span>
             </div>
-            <div class="title">上海汇珏智能设备展示</div>
+            <div class="title">汇珏智慧互联平台监控</div>
             <div class="message">中文/English</div>
         </div>
 </template>
