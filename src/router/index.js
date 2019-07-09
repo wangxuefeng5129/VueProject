@@ -3,10 +3,15 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 import Home from './../view/home'
+import map from './../view/map'
 const routes = [
     {
         path:'/',
         component:Home
+    },
+    {
+        path:'/map',
+        component:map
     }
 ];
 

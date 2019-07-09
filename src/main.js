@@ -4,6 +4,8 @@ import router from './router'
 import axios from './axios/http'
 import store from './store'
 import echarts from 'echarts'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import 'echarts-gl'
 import 'lib-flexible'
 import './assets/styles/reset.css'
@@ -18,6 +20,7 @@ Vue.use(BaiduMap,{
   ak:'DD279b2a90afdf0ae7a3796787a0742e'
 });
 window.console.log(process.env.VUE_APP_URL);
+Vue.use(ElementUI);
 new Vue({
   store,
   router,

@@ -1,23 +1,23 @@
 <template>
         <div class="equipment">
             <div class="commonTitle title">
-                <span>告警信息列表1111</span>
+                <span>告警信息列表</span>
                 <span>Device data</span>
             </div>
 
             <div class="bg" @click="dian()">
-                <div class="dangerData">
+                <!--<div class="dangerData">
                     <span>报警数:{{$store.state.wxf.alarms.alarmTotal}}</span>
                     <span>处理数:{{$store.state.wxf.alarms.alarmProcessedTotal}}</span>
                     <span>未处理数:{{$store.state.wxf.alarms.alarmUndisposedTotal}}</span>
-                </div>
-                <div class="sty1">
+                </div>-->
+                <!--<div class="sty1">
                     选择页面:<select  @change="getPages" v-model="number" >
                     <option :value="item" v-for="(item,index) in pages" :key="index">{{item}}</option>
                 </select>
-                </div>
+                </div>-->
                 <div>
-                    <table  class="data">
+                    <table  class="data" style="padding-top">
                         <thead>
                         <tr class="data_title">
                             <th @click="add()">告警设备名称</th>
@@ -53,7 +53,12 @@
             return{
                 pages:1,
                 number:'1',
-                data_message:[],
+                data_message:[
+                  {'deviceType':'智慧路灯','deviceAddress':"北京市西直门南大街人民医院",'alarmMessage':'灯具不亮','processed':'是'},
+                  {'deviceType':'井盖','deviceAddress':"北京市西城区德胜街道孔子学院总部国家汉办",'alarmMessage':'井盖移动','processed':'是'},
+                  {'deviceType':'光交箱','deviceAddress':"北京市西直门南大街成铭大厦",'alarmMessage':'锁打开','processed':'是'},
+                  {'deviceType':'地埋柜','deviceAddress':"北京市西城区德胜街道德胜门外大街129号国家汉办",'alarmMessage':'浸水','processed':'是'},
+                ],
                 devices:null
             }
         },
@@ -121,6 +126,8 @@
         height: 2.5rem;
         width: 4.71rem;
         position: relative;
+        padding-top: 0.4rem;
+        box-sizing: border-box;
     }
     .dangerData{
         padding-top: 0.1rem;

@@ -19,10 +19,30 @@
               itemGap:null,
               itemHeight:null,
               itemWidth:null,
+              newDevices:[],
+              newDevices2:[],
           }
         },
         mounted(){
-            this.showSort()
+            function GetDateStr(AddDayCount) {
+                var dd = new Date();
+                dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+                var y = dd.getFullYear();
+                var m = (dd.getMonth()+1)<10?"0"+(dd.getMonth()+1):(dd.getMonth()+1);//获取当前月份的日期，不足10补0
+                var d = dd.getDate()<10?"0"+dd.getDate():dd.getDate();//获取当前几号，不足10补0
+                return y+"-"+m+"-"+d;
+          }
+          this.showSort();
+            let devices = this.$store.state.wxf.devices;
+            for (let i in devices){
+                this.newDevices.push(...devices[i])
+            }
+           this.newDevices.forEach((item,index)=>{
+              if(item.offlineTime!==''){
+                this.newDevices2.push(item)
+              }
+            });
+            console.log(this.newDevices2)
         },
         methods:{
             Getscreen(){

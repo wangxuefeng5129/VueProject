@@ -6,6 +6,11 @@ const state  = {
     totalDevices:'',
     onlineDevices:'',
     devices:null,
+    lng:121.47939,
+    lat:31.23667,
+    zoom:16,
+    location:[],
+    value: [],
 };
 
 const getters = {};

@@ -5,12 +5,18 @@
             <span>Device data</span>
         </div>
         <div class="search">
-            <div>
-                设备地址:<input type="text" placeholder="请输入设备信息..." v-model="searchVal">
-            </div>
-            <div v-for="(item,index) in items" :key="index" style="border-bottom: 1px yellow solid">
-                <div class="status">imei:{{item.imei}}</div>
-                <div class="status">地址:{{item.address}}</div>
+
+            <div class="container" v-if="$store.state.wxf.value">
+                <div>地址:{{$store.state.wxf.value.address}}</div>
+                <div>imei:{{$store.state.wxf.value.imei}}</div>
+                <div>
+                    <span>经度:{{$store.state.wxf.value.latitude}}</span>
+                    <span>纬度:{{$store.state.wxf.value.longitude}}</span>
+                </div>
+                <div v-if="$store.state.wxf.value.traceName">设备名称:{{$store.state.wxf.value.traceName}}</div>
+                <div v-if="$store.state.wxf.value.onuName">设备名称:{{$store.state.wxf.value.onuName}}</div>
+                <div v-if="$store.state.wxf.value.coverName">设备名称:{{$store.state.wxf.value.coverName}}</div>
+                <div v-if="$store.state.wxf.value.lampPostName">设备名称:{{$store.state.wxf.value.lampPostName}}</div>
             </div>
         </div>
     </div>
@@ -21,14 +27,19 @@
         name:'SearchEqip',
         data(){
             return{
-                searchVal: null,
+                /*searchVal: null,*/
                 items: [
 
                 ],
+              options: [],
+              value: [],
+              list: [],
+              loading: false,
+              states: [],
             }
         },
         watch:{
-          searchVal(newVal,oldVal){
+          /*searchVal(newVal,oldVal){
             if(this.searchVal=== ''){
               this.items=[]
             }
@@ -46,7 +57,7 @@
                       }
                   }
               })
-          }
+          }*/
         },
         mounted(){
 
@@ -54,6 +65,9 @@
         computed:{
 
         },
+        methods:{
+
+        }
     }
 </script>
 
@@ -76,5 +90,12 @@
     }
     .search::-webkit-scrollbar {
         display: none; // 隐藏滚动条
+    }
+    .container{
+        margin-top: 0.7rem;
+        font-size: 0.18rem;
+        div{
+            margin-bottom: 0.2rem;
+        }
     }
 </style>
