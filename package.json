@@ -15,7 +15,7 @@
     "echarts-gl": "^1.1.1",
     "element-ui": "^2.10.1",
     "lib-flexible": "^0.3.2",
-    "qs": "^6.7.0",
+    "qs": "^6.7.3",
     "vue": "^2.6.10",
     "vue-baidu-map": "^0.21.20",
     "vue-router": "^3.0.6",
